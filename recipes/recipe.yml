@@ -6,8 +6,8 @@ name: LordOS
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 41 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/bazzite
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -22,20 +22,31 @@ modules:
       - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
       - micro
-      - starship
-    remove:
-      # example: removing firefox (in favor of the flatpak)
-      # "firefox" is the main package, "firefox-langpacks" is a dependency
-      - firefox
-      - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+      - steam 
 
   - type: default-flatpaks
     notify: true # Send notification after install/uninstall is finished (true/false)
     system:
       # If no repo information is specified, Flathub will be used by default
       install:
-        - org.mozilla.firefox
+        - com.google.Chrome
         - org.gnome.Loupe
+        - org.libreoffice.LibreOffice
+        - com.obsproject.Studio
+        - com.heroicgameslauncher.hgl
+        - org.kde.krita
+        - com.discordapp.Discord
+        - org.kde.kdenlive
+        - org.vinegarhq.Sober
+        - com.vysp3r.ProtonPlus
+        - com.spotify.Client
+        - com.github.Matoking.protontricks
+        - com.github.tchx84.Flatseal
+        - org.prismlauncher.PrismLauncher
+        - com.mojang.Minecraft
+        - net.lutris.Lutris
+        - org.fedoraproject.MediaWriter
+        - io.missioncenter.MissionCenter
       remove:
         - org.gnome.eog
     user: {} # Also add Flathub user repo, but no user packages
